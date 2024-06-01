@@ -2,9 +2,11 @@
 
 import { SubmitHandler, useForm } from "react-hook-form"
 import { InputText } from "./form/input"
-import { Login } from "@/api/models/login"
+import { Login } from "@/api/models/user"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { login, retrieveToken } from "@/api/auth"
+import { api, api_request, api_response } from "@/api/conn"
 
 const LoginForm = () => {
 
@@ -13,17 +15,34 @@ const LoginForm = () => {
     const router = useRouter();
 
     const submit: SubmitHandler<Login> = async (inputs) => {
-        console.log(inputs)
-        router.push("/dashboard")
+        const req = await login(inputs)
+
+        const fetchUser = async () => {
+            const token = retrieveToken()
+            const req: api_request = {
+                method: "GET",
+                token: token ? token : undefined,
+                url: "/user"
+            };
+
+            const data: api_response = await api(req);
+            localStorage.setItem("user", JSON.stringify(data.data))
+        };
+
+
+        if (req) {
+            await fetchUser()
+            router.push("/dashboard")
+        }
     }
 
     return (
 
-        <div className="w-full h-screen font-sans bg-cover bg-landscape">
+        <div className="w-full h-screen font-sans bg-cover bg-landscape bg-blue-600">
             <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                 <div className="w-full max-w-lg">
                     <div className="leading-loose">
-                        <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white/25" onSubmit={handleSubmit(submit)}>
+                        <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white" onSubmit={handleSubmit(submit)}>
                             <p className="mb-8 text-2xl font-light text-center text-gray-600">
                                 Sistema Pesqueiro
                             </p>
