@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080";
+const API_URL = "http://localhost:8080/api";
 
 export interface api_request {
     method: "POST" | "PUT" | "GET" | "DELETE"
