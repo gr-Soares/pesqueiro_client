@@ -28,6 +28,9 @@ export const Sidebar = () => {
     return (
         <nav className="mt-6">
             <div>
+                <SideBarItem href="/dashboard" title="Inicio" image="/icons/icons8-home-48.png" />
+            </div>
+            <div>
                 <SideBarItem href="/dashboard/cliente" title="Clientes" image="/icons/icons8-client-48.png" />
             </div>
         </nav>

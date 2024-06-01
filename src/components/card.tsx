@@ -13,7 +13,7 @@ export const CardLink = (props: CardLinkProps) => {
     return (
         <Link href={props.href}>
             <div className="w-40">
-                <div className="relative w-full px-4 py-6 bg-white shadow-l">
+                <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
                     <p className="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
                         {props.title}
                     </p>
