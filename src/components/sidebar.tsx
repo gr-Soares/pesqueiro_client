@@ -28,7 +28,7 @@ export const Sidebar = () => {
     return (
         <nav className="mt-6">
             <div>
-                <SideBarItem href="/cliente" title="Clientes" image="/icons/icons8-client-48.png" />
+                <SideBarItem href="/dashboard/cliente" title="Clientes" image="/icons/icons8-client-48.png" />
             </div>
         </nav>
     )
