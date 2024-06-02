@@ -5,6 +5,7 @@ export type Cliente = {
     cpf: string
     email: string
     celular: string
+    clienteComanda: ClienteComanda
 }
 
 export type ClienteComanda = {

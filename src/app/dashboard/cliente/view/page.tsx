@@ -28,7 +28,7 @@ export default function ClienteView() {
         setData(data.data)
     };
 
-    const fetchComanda = async(id:string) => {
+    const fetchComanda = async (id: string) => {
         const token = retrieveToken()
 
         const req: api_request = {
@@ -42,11 +42,14 @@ export default function ClienteView() {
         return data.data
     }
 
-    const selectCliente = async(cliente: Cliente) => {
+    const selectCliente = async (cliente: Cliente) => {
         setSelect(cliente)
 
-        const comanda = await fetchComanda(cliente.id)
-        setComanda(comanda)
+        if (cliente.clienteComanda) {
+            setComanda(cliente.clienteComanda)
+        }else{
+            setComanda(undefined)
+        }
     }
 
     useEffect(() => {
@@ -56,7 +59,7 @@ export default function ClienteView() {
     return (
         <>
             <SimpleTable title={"Clientes"} data={data} header={["nome", "cpf"]} setData={selectCliente} />
-            {select ? <CardClienteInfo cliente={select} comanda={comanda}/> : <></>}
+            {select ? <CardClienteInfo cliente={select} comanda={comanda} /> : <></>}
         </>
     )
 }
