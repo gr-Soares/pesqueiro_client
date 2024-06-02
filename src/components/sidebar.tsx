@@ -33,6 +33,12 @@ export const Sidebar = () => {
             <div>
                 <SideBarItem href="/dashboard/cliente" title="Clientes" image="/icons/icons8-client-48.png" />
             </div>
+            <div>
+                <SideBarItem href="/dashboard/produtos" title="Produtos" image="/icons/icons8-basket-48.png" />
+            </div>
+            <div>
+                <SideBarItem href="/dashboard/fornecedor" title="Fornecedor" image="/icons/icons8-supplier-48.png" />
+            </div>
         </nav>
     )
 }
