@@ -18,7 +18,7 @@ export default function DashboardLayout({
             </div>
             <div className="flex items-center pt-6 ml-6">
               <p className="text-xl font-bold text-center text-white">
-                SEU FERNANDO <br /> FISH
+                SEU ARMANDO <br /> FISH
               </p>
             </div>
             <Sidebar />
