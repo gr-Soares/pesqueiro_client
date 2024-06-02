@@ -7,5 +7,8 @@ export type Register = {
     username: string
     password: string
     email: string
-    name: string
+    nome: string
+    celular: string
+    salario:number
+    role:string
 }
