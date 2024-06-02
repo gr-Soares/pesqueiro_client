@@ -6,3 +6,16 @@ export type Cliente = {
     email: string
     celular: string
 }
+
+export type ClienteComanda = {
+    id:string
+    gasto:number
+    entrada:string
+    saida:string
+    comanda:Comanda
+}
+
+export type Comanda = {
+    id:number
+    status:string
+}
