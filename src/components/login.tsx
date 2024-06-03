@@ -7,6 +7,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { login, retrieveToken } from "@/api/auth"
 import { api, api_request, api_response } from "@/api/conn"
+import { useState } from "react"
+import { Success, Warning } from "./alerts"
 
 const LoginForm = () => {
 
@@ -82,26 +84,34 @@ export const RegisterForm = () => {
 
     const router = useRouter();
 
-    const submit: SubmitHandler<Login> = async (inputs) => {
-        const req = await login(inputs)
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState(false)
+
+    const submit: SubmitHandler<Register> = async (inputs) => {
+
 
         const fetchUser = async () => {
-            const token = retrieveToken()
+
             const req: api_request = {
                 method: "POST",
-                token: token ? token : undefined,
-                url: "/user"
+                url: "/user",
+                data: inputs
             };
 
             const data: api_response = await api(req);
-            localStorage.setItem("user", JSON.stringify(data.data))
+
+            if (data.status == 200) {
+                setSuccess(true)
+                setError(false)
+                router.push("/")
+            } else {
+                setError(true)
+                setSuccess(false)
+            }
         };
 
 
-        if (req) {
-            await fetchUser()
-            router.push("/dashboard")
-        }
+        await fetchUser()
     }
 
     return (
@@ -130,10 +140,7 @@ export const RegisterForm = () => {
                                     <InputText register={register} inputType="text" title="" placeholder="Salario" name="salario" />
                                 </div>
                                 <div className="mb-2">
-                                    <InputText register={register} inputType="password" title="" placeholder="Senha" name="senha" />
-                                </div>
-                                <div className="mb-2">
-                                    <InputSelect register={register} options={["ADMIN", "USER"]} name={"role"} title="Nivel de Acesso" />
+                                    <InputText register={register} inputType="password" title="" placeholder="Senha" name="password" />
                                 </div>
                                 <div className="flex items-center justify-between mt-4">
                                     <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
@@ -141,6 +148,8 @@ export const RegisterForm = () => {
                                     </button>
                                 </div>
                             </form>
+                            {error ? Warning("Problemas ao cadastrar este Funcionario!") : <></>}
+                            {success ? Success("Funcionario cadastrado!") : <></>}
                         </div>
                     </div>
                 </div>

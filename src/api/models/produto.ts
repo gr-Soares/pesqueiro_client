@@ -1,10 +1,12 @@
+import { Comanda } from "./cliente"
+
 export type Produto = {
     id: string
     descricao: string
     valor_c: number
     valor_f: number
     qtde: number
-    tipo: "COMIDA" | "BEBIDA" | "PEIXE"
+    tipo: "ALUGUEL" | "COMPRA"
     marca: Marca
     marca_m?: string
 }
@@ -23,4 +25,22 @@ export type Fornecedor = {
     email: string
     telefone: string
     marcas: Marca[]
+}
+
+export type Consumo = {
+    qtde: number
+    valor: number
+    comanda: Comanda
+    produto: Produto
+    produto_m?: string
+    comanda_m?: number
+}
+
+export type Aluguel = {
+    qtde: number
+    valor: number
+    comanda: Comanda
+    produto: Produto
+    produto_m?: string
+    comanda_m?: number
 }

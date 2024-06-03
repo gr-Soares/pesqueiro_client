@@ -6,7 +6,7 @@ import { Fornecedor, Marca } from "@/api/models/produto";
 import { SimpleTable } from "@/components/table";
 import { useEffect, useState } from "react";
 
-export default function ClienteView() {
+export default function FornecedorView() {
 
     const [data, setData] = useState<Fornecedor[]>([])
 

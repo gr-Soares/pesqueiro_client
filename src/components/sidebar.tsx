@@ -34,6 +34,9 @@ export const Sidebar = () => {
                 <SideBarItem href="/dashboard/cliente" title="Clientes" image="/icons/icons8-client-48.png" />
             </div>
             <div>
+                <SideBarItem href="/dashboard/pedido" title="Pedido" image="/icons/icons8-order-48.png" />
+            </div>
+            <div>
                 <SideBarItem href="/dashboard/produtos" title="Produtos" image="/icons/icons8-basket-48.png" />
             </div>
             <div>
