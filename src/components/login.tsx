@@ -44,7 +44,7 @@ const LoginForm = () => {
             <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                 <div className="w-full max-w-lg">
                     <div className="leading-loose">
-                        <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white" onSubmit={handleSubmit(submit)}>
+                        <form className="max-w-sm p-10 m-auto rounded  bg-white" onSubmit={handleSubmit(submit)}>
                             <p className="mb-8 text-2xl font-light text-center text-gray-600">
                                 Sistema Pesqueiro
                             </p>
@@ -55,7 +55,7 @@ const LoginForm = () => {
                                 <InputText register={register} inputType="password" title="" placeholder="Senha" name="password" />
                             </div>
                             <div className="flex items-center justify-between mt-4">
-                                <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                     Entrar
                                 </button>
                             </div>
@@ -120,7 +120,7 @@ export const RegisterForm = () => {
                 <div className="container flex items-center justify-center flex-1 h-full mx-auto">
                     <div className="w-full max-w-lg">
                         <div className="leading-loose">
-                            <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white" onSubmit={handleSubmit(submit)}>
+                            <form className="max-w-sm p-10 m-auto rounded  bg-white" onSubmit={handleSubmit(submit)}>
                                 <p className="mb-8 text-2xl font-light text-center text-gray-600">
                                     Sistema Pesqueiro
                                 </p>
@@ -146,7 +146,7 @@ export const RegisterForm = () => {
                                     <InputText register={register} inputType="password" title="" placeholder="Senha" name="password" />
                                 </div>
                                 <div className="flex items-center justify-between mt-4">
-                                    <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                    <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                         Registrar
                                     </button>
                                 </div>

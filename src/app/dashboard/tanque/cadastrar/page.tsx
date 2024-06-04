@@ -1,37 +1,28 @@
 "use client"
-
 import { retrieveToken } from "@/api/auth";
 import { api, api_request, api_response } from "@/api/conn";
-import { Peixe } from "@/api/models/peixe";
-import { Fornecedor } from "@/api/models/produto";
+import { Tanque } from "@/api/models/peixe";
 import { Success, Warning } from "@/components/alerts";
 import { InputSelect, InputText } from "@/components/form/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 
-export default function PeixeCadastro() {
+export default function NovoTanque() {
 
-    const { register, handleSubmit } = useForm<Peixe>()
+    const { register, handleSubmit } = useForm<Tanque>()
 
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
 
-    const [fornecedores, setFornecedores] = useState<Fornecedor[]>([])
-
-    const submit: SubmitHandler<Peixe> = async (inputs) => {
-
-        const fornecedor = fornecedores.filter((f) => f.nome == inputs.fornecedor_m)[0]
-
-        inputs.fornecedor = fornecedor
-        inputs.fornecedor_m = undefined
+    const submit: SubmitHandler<Tanque> = async (inputs) => {
 
         const fetch = async () => {
             const token = retrieveToken()
             const req: api_request = {
                 method: "POST",
                 token: token ? token : undefined,
-                url: "/peixe",
+                url: "/tanque",
                 data: inputs
             };
 
@@ -52,41 +43,21 @@ export default function PeixeCadastro() {
         }
     }
 
-    const fetchFornecedores = async () => {
-        const token = retrieveToken()
-        const req: api_request = {
-            method: "GET",
-            token: token ? token : undefined,
-            url: "/fornecedor"
-        };
-
-        const data: api_response = await api(req);
-
-        setFornecedores(data.data)
-    }
-
-    useEffect(() => {
-        fetchFornecedores()
-    }, [])
-
     return (
         <>
             <div className="leading-loose">
                 <form className="max-w-sm p-10 m-auto rounded  bg-white" onSubmit={handleSubmit(submit)}>
                     <p className="mb-8 text-2xl font-light text-center text-gray-600">
-                        Novo Peixe
+                        Novo Tanque
                     </p>
                     <div className="mb-2">
-                        <InputText register={register} inputType="text" title="" placeholder="Especie" name="especie" />
+                        <InputText register={register} inputType="text" title="" placeholder="Descricao" name="descricao" />
                     </div>
                     <div className="mb-2">
-                        <InputText register={register} inputType="number" title="" placeholder="Reproducao" name="reproducao" />
+                        <InputText register={register} inputType="number" title="" placeholder="Capacidade" name="capacidade" />
                     </div>
                     <div className="mb-2">
-                        <InputText register={register} inputType="text" title="" placeholder="Valor" name="valor" />
-                    </div>
-                    <div className="mb-2">
-                        <InputSelect register={register} options={fornecedores.map((v) => `${v.nome}`)} name={"fornecedor_m"} title="Forncedor" />
+                    <InputSelect register={register} options={["OK", "CHEIO", "MANUTENÇÃO", "PARADO"]} name="status" title="Condição Tanque" />
                     </div>
                     <div className="flex items-center justify-between mt-4">
                         <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
@@ -94,8 +65,8 @@ export default function PeixeCadastro() {
                         </button>
                     </div>
                 </form>
-                {error ? Warning("Problemas ao cadastrar este Peixe!") : <></>}
-                {success ? Success("Peixe cadastrado!") : <></>}
+                {error ? Warning("Problemas ao cadastrar este Tanque!") : <></>}
+                {success ? Success("Tanque cadastrado!") : <></>}
             </div>
         </>
     )

@@ -40,6 +40,9 @@ export const Sidebar = () => {
                 <SideBarItem href="/dashboard/peixes" title="Peixes" image="/icons/icons8-fish-48.png" />
             </div>
             <div>
+                <SideBarItem href="/dashboard/tanque" title="Tanques" image="/icons/icons8-rectangular-aquarium-48.png" />
+            </div>
+            <div>
                 <SideBarItem href="/dashboard/produtos" title="Produtos" image="/icons/icons8-basket-48.png" />
             </div>
             <div>

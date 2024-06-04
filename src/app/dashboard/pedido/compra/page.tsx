@@ -92,7 +92,7 @@ export default function PedidoCompra() {
     return (
         <>
             <div className="leading-loose">
-                <form className="max-w-sm p-10 m-auto rounded shadow-xl bg-white" onSubmit={handleSubmit(submit)}>
+                <form className="max-w-sm p-10 m-auto rounded  bg-white" onSubmit={handleSubmit(submit)}>
                     <p className="mb-8 text-2xl font-light text-center text-gray-600">
                         Novo Pedido
                     </p>
@@ -106,7 +106,7 @@ export default function PedidoCompra() {
                         <InputText register={register} inputType="number" title="" placeholder="Quantidade" name="qtde" />
                     </div>
                     <div className="flex items-center justify-between mt-4">
-                        <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                        <button type="submit" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                             Registrar
                         </button>
                     </div>

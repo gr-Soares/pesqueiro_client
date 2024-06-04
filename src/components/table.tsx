@@ -9,13 +9,13 @@ export const SimpleTable = (props: SimpleTableProps) => {
 
     return (
         <div className="">
-            <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
                 <p className="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
                     {props.title}
                 </p>
                 <div className="flex items-center justify-center my-6 space-x-2">
 
-                    <table className="table p-4 bg-white rounded-lg shadow">
+                    <table className="table p-4 bg-white rounded-lg ">
                         <thead>
                             <tr>
                                 {props.header.map((v) => (

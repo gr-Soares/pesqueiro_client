@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <main className="relative h-screen overflow-hidden bg-gray-200">
       <div className="flex items-start justify-between">
-        <div className="relative hidden h-screen shadow-lg lg:block w-60">
+        <div className="relative hidden h-screen -lg lg:block w-60">
           <div className="h-full bg-blue-500">
             <div className="flex justify-center items-center align-middle pt-6">
               <Image src={"/icons/icons8-logo-48.png"} alt={""} width="42" height="642" />

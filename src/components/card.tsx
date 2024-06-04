@@ -16,7 +16,7 @@ export const CardLink = (props: CardLinkProps) => {
     return (
         <Link href={props.href}>
             <div className="w-40">
-                <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+                <div className="relative w-full rounded px-4 py-6 bg-white -l">
                     <p className="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
                         {props.title}
                     </p>
@@ -35,7 +35,7 @@ export const CardClienteInfo = (props: { cliente: Cliente, comanda?: ClienteComa
 
     return (
         <div className="">
-            <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
                 <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
                     Informações Cliente
                 </p>
@@ -68,7 +68,7 @@ export const CardProtudoInfo = (props: { produto: Produto }) => {
 
     return (
         <div className="">
-            <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
                 <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
                     Informações Produto
                 </p>
@@ -101,7 +101,7 @@ export const CardPeixeInfo = (props: { peixe: Peixe }) => {
 
     return (
         <div className="">
-            <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
                 <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
                     Informações Peixe
                 </p>

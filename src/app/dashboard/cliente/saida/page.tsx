@@ -74,7 +74,7 @@ export default function EntradaCliente() {
     return (
         <>
             <div className="leading-loose">
-                <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+                <div className="relative w-full rounded px-4 py-6 bg-white -l">
                     <p className="text-sm font-semibold text-gray-700 border-b border-gray-200 w-max">
                         Registrar saida cliente
                     </p>
@@ -84,7 +84,7 @@ export default function EntradaCliente() {
                             <InputSelect register={register} options={["PAGO","DEVENDO"]} name="status" title="Selecionar Status" />
                         </div>
                         <div className="flex items-center justify-between mt-4">
-                            <button type="submit" className="text-sm py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            <button type="submit" className="text-sm py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Registrar
                             </button>
                         </div>

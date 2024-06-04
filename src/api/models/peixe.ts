@@ -8,3 +8,18 @@ export type Peixe = {
     fornecedor_m?: string
     fornecedor: Fornecedor
 }
+
+export type Tanque = {
+    id: string
+    descricao: string
+    capacidade: number
+    status: string
+}
+
+export type PeixeTanque = {
+    peixe: Peixe
+    tanque: Tanque
+    qtde: number
+    peixe_m?: string
+    tanque_m?: string
+}
