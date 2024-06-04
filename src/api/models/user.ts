@@ -12,3 +12,12 @@ export type Register = {
     salario:number
     role:string
 }
+
+export type Funcionario = {
+    username: string
+    email: string
+    nome: string
+    celular: string
+    salario:number
+    role:string
+}
