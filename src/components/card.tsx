@@ -1,4 +1,5 @@
 import { Cliente, ClienteComanda } from "@/api/models/cliente"
+import { Peixe } from "@/api/models/peixe"
 import { Produto } from "@/api/models/produto"
 import Image from "next/image"
 import Link from "next/link"
@@ -89,6 +90,27 @@ export const CardProtudoInfo = (props: { produto: Produto }) => {
                     </p>
                     <p className="text-sm font text-gray-700 border-gray-200 w-max">
                         Forncedor: {props.produto.marca.fornecedor.nome}
+                    </p>
+                </> : <></>}
+            </div>
+        </div>
+    )
+}
+
+export const CardPeixeInfo = (props: { peixe: Peixe }) => {
+
+    return (
+        <div className="">
+            <div className="relative w-full rounded px-4 py-6 bg-white shadow-l">
+                <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
+                    Informações Peixe
+                </p>
+                <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                    Especie: {props.peixe.especie}
+                </p>
+                {props.peixe.fornecedor ? <>
+                    <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                        Forncedor: {props.peixe.fornecedor.nome}
                     </p>
                 </> : <></>}
             </div>
