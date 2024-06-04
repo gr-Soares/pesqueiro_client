@@ -17,6 +17,7 @@ export type Tanque = {
 }
 
 export type PeixeTanque = {
+    id: string
     peixe: Peixe
     tanque: Tanque
     qtde: number

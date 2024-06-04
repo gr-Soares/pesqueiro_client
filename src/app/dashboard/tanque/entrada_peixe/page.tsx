@@ -8,12 +8,16 @@ import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 
-export default function VincularPeixe() {
+export default function EntradaPeixe() {
 
     const { register, handleSubmit } = useForm<PeixeTanque>()
 
     const [tanques, setTanques] = useState<Tanque[]>([])
     const [peixes, setPeixes] = useState<Peixe[]>([])
+
+    const [peixesOp, setPeixesOp] = useState<Peixe[]>([])
+
+    const [peixeTanque, setPeixeTanque] = useState<PeixeTanque[]>([]);
 
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
@@ -26,13 +30,17 @@ export default function VincularPeixe() {
         inputs.peixe = peixe
         inputs.tanque = tanque
 
+        const dt = peixeTanque.filter((f) => f.peixe.id == peixe.id && f.tanque.id == tanque.id)[0]
+
+        dt.qtde = Number(inputs.qtde) + dt.qtde;
+
         const fetch = async () => {
             const token = retrieveToken()
             const req: api_request = {
-                method: "POST",
+                method: "PUT",
                 token: token ? token : undefined,
                 url: "/controle_peixe",
-                data: inputs
+                data: dt
             };
 
             const data: api_response = await api(req);
@@ -65,6 +73,32 @@ export default function VincularPeixe() {
         setTanques(data.data)
     }
 
+    const fetchPeixesTanque = async (value: string) => {
+
+        const tanque = tanques.filter((f) => f.descricao == value)[0].id
+        const token = retrieveToken()
+        const req: api_request = {
+            method: "GET",
+            token: token ? token : undefined,
+            url: `/controle_peixe/tanque/${tanque}`
+        };
+
+        const data: api_response = await api(req);
+
+        const peixeTanqueR = data.data
+
+        setPeixeTanque(peixeTanqueR)
+
+        const result: Peixe[] = []
+
+        peixeTanqueR.forEach((data: PeixeTanque) => {
+            const dt = peixes.filter((f) => f.id == data.peixe.id)[0]
+            result.push(dt)
+        });
+
+        setPeixesOp(result)
+    }
+
     const fetchPeixes = async () => {
         const token = retrieveToken()
         const req: api_request = {
@@ -79,8 +113,8 @@ export default function VincularPeixe() {
     }
 
     useEffect(() => {
-        fetchPeixes()
         fetchTanques()
+        fetchPeixes()
     }, [])
 
     return (
@@ -88,13 +122,13 @@ export default function VincularPeixe() {
             <div className="leading-loose">
                 <form className="max-w-sm p-10 m-auto rounded  bg-white" onSubmit={handleSubmit(submit)}>
                     <p className="mb-8 text-2xl font-light text-center text-gray-600">
-                        Vincular Peixe Tanque
+                        Entrada Peixes
                     </p>
                     <div className="mb-2">
-                        <InputSelect register={register} options={tanques.map((f) => f.descricao)} name="tanque_m" title="Tanque" />
+                        <InputSelect register={register} options={tanques.map((f) => f.descricao)} onSelect={fetchPeixesTanque} name="tanque_m" title="Tanque" />
                     </div>
                     <div className="mb-2">
-                        <InputSelect register={register} options={peixes.map((f) => f.especie)} name="peixe_m" title="Peixe" />
+                        <InputSelect register={register} options={peixesOp.map((f) => f.especie)} name="peixe_m" title="Peixe" />
                     </div>
                     <div className="mb-2">
                         <InputText register={register} inputType="number" title="" placeholder="Quantidade" name="qtde" />

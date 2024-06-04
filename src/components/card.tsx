@@ -1,5 +1,5 @@
 import { Cliente, ClienteComanda } from "@/api/models/cliente"
-import { Peixe } from "@/api/models/peixe"
+import { Peixe, PeixeTanque, Tanque } from "@/api/models/peixe"
 import { Produto } from "@/api/models/produto"
 import Image from "next/image"
 import Link from "next/link"
@@ -113,6 +113,26 @@ export const CardPeixeInfo = (props: { peixe: Peixe }) => {
                         Forncedor: {props.peixe.fornecedor.nome}
                     </p>
                 </> : <></>}
+            </div>
+        </div>
+    )
+}
+
+export const CardTanqueInfo = (props: { data: PeixeTanque[] }) => {
+
+    return (
+        <div className="">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
+                <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
+                    Informações Tanque
+                </p>
+                {props.data.map((e) =>
+                    <>
+                        <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                            {e.qtde} {e.peixe.especie}
+                        </p>
+                    </>
+                )}
             </div>
         </div>
     )
