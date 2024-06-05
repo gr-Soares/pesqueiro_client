@@ -11,8 +11,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 export default function EntradaCliente() {
 
     type Pag = {
-        nome:string,
-        status:string
+        nome: string,
+        status: string
     }
 
     const [data, setData] = useState<Cliente[]>([])
@@ -28,7 +28,9 @@ export default function EntradaCliente() {
 
         const data: api_response = await api(req);
 
-        setData(data.data)
+        const dt = data.data.filter((e: Cliente) => e.clienteComanda != null)
+
+        setData(dt)
     };
 
     const { register, handleSubmit } = useForm<Pag>()
@@ -81,7 +83,7 @@ export default function EntradaCliente() {
                     <form onSubmit={handleSubmit(submit)}>
                         <div className="flex items-center justify-center my-6 space-x-2">
                             <InputSelect register={register} options={data.map((v) => v.nome)} name="nome" title="Selecionar Cliente" />
-                            <InputSelect register={register} options={["PAGO","DEVENDO"]} name="status" title="Selecionar Status" />
+                            <InputSelect register={register} options={["PAGO", "DEVENDO"]} name="status" title="Selecionar Status" />
                         </div>
                         <div className="flex items-center justify-between mt-4">
                             <button type="submit" className="text-sm py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center font-semibold -md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">

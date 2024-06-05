@@ -112,7 +112,7 @@ export const CardPeixeInfo = (props: { peixe: Peixe }) => {
                     Valor: {props.peixe.valor}
                 </p>
                 <p className="text-sm font text-gray-700 border-gray-200 w-max">
-                    Reprodução: {props.peixe.valor}%
+                    Reprodução: {props.peixe.reproducao}%
                 </p>
                 {props.peixe.fornecedor ? <>
                     <p className="text-sm font text-gray-700 border-gray-200 w-max">
