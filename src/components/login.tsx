@@ -137,10 +137,7 @@ export const RegisterForm = () => {
                                     <InputText register={register} inputType="text" title="" placeholder="Email" name="email" />
                                 </div>
                                 <div className="mb-2">
-                                    <InputText register={register} inputType="text" title="" placeholder="Telefone" name="telefone" />
-                                </div>
-                                <div className="mb-2">
-                                    <InputText register={register} inputType="text" title="" placeholder="Salario" name="salario" />
+                                    <InputText register={register} inputType="text" title="" placeholder="Celular" name="celular" />
                                 </div>
                                 <div className="mb-2">
                                     <InputText register={register} inputType="password" title="" placeholder="Senha" name="password" />

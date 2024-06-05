@@ -38,7 +38,7 @@ export default function PeixeView() {
 
     return (
         <>
-            <SimpleTable title={"Peixes"} data={data} header={["especie", "valor", "reproducao"]} setData={selectFunc} />
+            <SimpleTable title={"Peixes"} data={data} header={["especie", "valor"]} setData={selectFunc} />
             {select ? <CardPeixeInfo peixe={select} /> : <></>}
         </>
     )

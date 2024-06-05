@@ -1,6 +1,6 @@
 import { Cliente, ClienteComanda } from "@/api/models/cliente"
 import { Peixe, PeixeTanque, Tanque } from "@/api/models/peixe"
-import { Produto } from "@/api/models/produto"
+import { Consumo, Produto } from "@/api/models/produto"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -108,9 +108,15 @@ export const CardPeixeInfo = (props: { peixe: Peixe }) => {
                 <p className="text-sm font text-gray-700 border-gray-200 w-max">
                     Especie: {props.peixe.especie}
                 </p>
+                <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                    Valor: {props.peixe.valor}
+                </p>
+                <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                    Reprodução: {props.peixe.valor}%
+                </p>
                 {props.peixe.fornecedor ? <>
                     <p className="text-sm font text-gray-700 border-gray-200 w-max">
-                        Forncedor: {props.peixe.fornecedor.nome}
+                        Fornecedor: {props.peixe.fornecedor.nome}
                     </p>
                 </> : <></>}
             </div>
@@ -135,5 +141,46 @@ export const CardTanqueInfo = (props: { data: PeixeTanque[] }) => {
                 )}
             </div>
         </div>
+    )
+}
+
+export const CardConsumo = (props: { data: Consumo[] }) => {
+    return (
+        <div className="">
+            <div className="relative w-full rounded px-4 py-6 bg-white -l">
+                <p className="border-b font-semibold text-gray-700 border-gray-200 w-max">
+                    Informações Consumo
+                </p>
+                <tr />
+                {props.data.map((d: Consumo) => <>
+                    <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                        Produto: {d.produto.descricao}
+                    </p>
+                    <p className="text-sm font text-gray-700 border-gray-200 w-max">
+                        Valor: {d.produto.valor_f * d.qtde}
+                    </p>
+                </>)}
+            </div>
+        </div>
+    )
+}
+
+export const CardDashInfo = (props: { valor: string, titulo: string, image: string }) => {
+    return (
+
+        <div className="p-4 bg-white rounded-2xl w-60">
+            <div className="flex items-center">
+                <Image src={props.image} alt={""} width="24" height="24" />
+                <p className="ml-2 text-gray-700 text-md ">
+                    {props.titulo}
+                </p>
+            </div>
+            <div className="flex flex-col justify-center">
+                <p className="my-4 text-4xl font-bold text-left text-gray-800">
+                    {props.valor}
+                </p>
+            </div>
+        </div>
+
     )
 }

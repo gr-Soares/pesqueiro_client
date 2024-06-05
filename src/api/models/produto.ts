@@ -9,6 +9,7 @@ export type Produto = {
     tipo: "ALUGUEL" | "COMPRA"
     marca: Marca
     marca_m?: string
+    produto_m?: string
 }
 
 export type Marca = {

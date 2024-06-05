@@ -7,6 +7,7 @@ export default function Cliente() {
             <CardLink href="cliente/view" image="/icons/icons8-client-48.png" title="Visualizar" />
             <CardLink href="cliente/entrada" image="/icons/icons8-client-48.png" title="Entrada" />
             <CardLink href="cliente/saida" image="/icons/icons8-client-48.png" title="Saida" />
+            <CardLink href="cliente/consumo" image="/icons/icons8-client-48.png" title="Consumo" />
         </>
     );
 }
